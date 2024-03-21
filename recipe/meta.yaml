@@ -1,0 +1,41 @@
+{% set name = "Pymem" %}
+{% set version = "1.13.1" %}
+
+{% set python_min = "3.8" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  fn: "{{ name|lower }}-{{ version }}.tar.gz"
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "82b50040e2e85179dc702d93d4857b475e0d2eb449bd5f1c50d3f40eb05ae1ad"
+
+build:
+  number: 0
+  noarch: python
+
+requirements:
+  host:
+    - pip
+    - python {{ python_min }}
+  run:
+    - __win
+    - python >={{ python_min }}
+
+test:
+  imports:
+    - pymem
+
+about:
+  home: "https://pymem.readthedocs.io/en/latest/"
+  license_file: LICENSE
+  license: MIT
+  summary: A Python library for manipulating Windows process memory
+  doc_url: "https://pymem.readthedocs.io/en/latest/"
+  dev_url: "https://github.com/srounet/pymem"
+
+extra:
+  recipe-maintainers:
+    - chenghlee

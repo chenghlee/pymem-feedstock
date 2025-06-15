@@ -1,5 +1,5 @@
-{% set name = "Pymem" %}
-{% set version = "1.13.1" %}
+{% set name = "pymem" %}
+{% set version = "1.14.0" %}
 
 {% set python_min = "3.8" %}
 
@@ -9,8 +9,8 @@ package:
 
 source:
   fn: "{{ name|lower }}-{{ version }}.tar.gz"
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: "82b50040e2e85179dc702d93d4857b475e0d2eb449bd5f1c50d3f40eb05ae1ad"
+  url: "https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "29f6c32bcad0032888afabadf97d1e4c7757f88873de4d79f7f4c1df9b9e7ef1"
 
 build:
   number: 0
@@ -18,8 +18,9 @@ build:
 
 requirements:
   host:
-    - pip
     - python {{ python_min }}
+    - pip
+    - poetry
   run:
     - __win
     - python >={{ python_min }}
